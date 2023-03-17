@@ -1,2 +1,2 @@
-# Jogo-C3-Invaders
-Similar ao Space Invaders, C3 Invaders é um jogo desenvolvido em Python, através da biblioteca Graphics.
+# Jogo-AED1
+Jogo criado em python utilizando a biblioteca graphics.
