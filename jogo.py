@@ -239,7 +239,7 @@ def jogo():
     to_em_d = False
     cont_a_parado = 0
     to_em_a = False
-    velocidadeInimigo = 6
+    velocidadeInimigo = 1
     velocidadeNave = 4
     ta_explodindo = False
     qual_explosao = 0
