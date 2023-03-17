@@ -613,3 +613,11 @@ while loopDoGame == False:
         continue
 
 win.close()
+
+'''
+
+O código não está devidamente limpo e organizado conforme o ideal, e por isso, talvez sua leitura não esteja amigável.
+
+Entretanto, o objetivo da atividade era exercitar a solução de problemas e a lógica, e com isso, o sistema foi desenvolvido sem preocupações nesse quesito.
+
+'''
