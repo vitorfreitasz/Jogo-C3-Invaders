@@ -165,43 +165,45 @@ def mostraMenu():
     iniciar = False
     sair = False
 
-    for elem in itensMenu:
-        elem.draw(win)
+    for item in itensMenu:
+        item.draw(win)
 
     while iniciar == False and sair == False:
-        for elem in itensSobre:
-            elem.undraw()
+        for item in itensSobre:
+            item.undraw()
 
         clique = win.getMouse()
         if 250 < clique.getX() < 450 and 250 < clique.getY() < 330:
             iniciar = True
         
         if 250 < clique.getX() < 450 and 350 < clique.getY() < 430:
-            for elem in itensMenu:
-                elem.undraw()        
-            for elem in itensSobre:
-                elem.draw(win)
+            for item in itensMenu:
+                item.undraw()        
+            for item in itensSobre:
+                item.draw(win)
             win.getMouse()
-            for elem in itensMenu:
-                elem.draw(win)
+            for item in itensSobre:
+                item.undraw()
+            for item in itensMenu:
+                item.draw(win)
 
         if 250 < clique.getX() < 450 and 450 < clique.getY() < 530:
             sair = True
 
         if sair == True:
-            for elem in itensMenu:
-                elem.undraw()
+            for item in itensMenu:
+                item.undraw()
             win.close()
 
         if iniciar == True:    
-            for elem in itensMenu:
-                elem.undraw()
-            for elem in itensJogo:
-                elem.draw(win)
-            for elem in barrasVida:
-                elem.draw(win)
-            for elem in barrasVidaNave:
-                elem.draw(win)
+            for item in itensMenu:
+                item.undraw()
+            for item in itensJogo:
+                item.draw(win)
+            for item in barrasVida:
+                item.draw(win)
+            for item in barrasVidaNave:
+                item.draw(win)
 
 #-------------------------------------------------DEF DO JOGO--------------------------------------------------   
 def jogo():
@@ -398,12 +400,12 @@ def jogo():
                 tiro.draw(win)
                 #print(tiro.getP1())
             
-        for elem in lista_tiros:
-            elem.move(0,-10)
+        for tiro in lista_tiros:
+            tiro.move(0,-10)
             #print(tiro.getP1())
-            if elem.getCenter().getY() == -20:
-                elem.undraw()
-                lista_tiros.remove(elem)
+            if tiro.getCenter().getY() == -20:
+                tiro.undraw()
+                lista_tiros.remove(tiro)
 
         #--------------------------- COLISÃO DOS TIROS COM INIMIGOS---------------------------------
         for elem in lista_tiros:
@@ -437,13 +439,13 @@ def jogo():
                         barrasVidaNave[vidaNave].undraw()
                         #print(vidaNave)
 
-                    elif elem.getP1().getX() <= a.getP2().getX() <= elem.getP2().getX():
-                        elem.undraw()
+                    elif inimigo.getP1().getX() <= parteNave.getP2().getX() <= inimigo.getP2().getX():
+                        inimigo.undraw()
                         lista_aliens[i].undraw()
-                        lista_inimigos.remove(elem)
+                        lista_inimigos.remove(inimigo)
                         lista_aliens.remove(lista_aliens[i])
                         ta_explodindo = True
-                        quem_explodiu = elem
+                        quem_explodiu = inimigo
                         vidaNave -= 1
                         barrasVidaNave[vidaNave].undraw()
                         #print(vidaNave)
@@ -456,12 +458,9 @@ def jogo():
                         lista_aliados.remove(aliado)
                         aliado.undraw()
                         bufff.undraw()
-                        #ta_explodindo = True
-                        #quem_explodiu = elem
 
                         if vidaNave < 5:       #CASO A NAVE JÁ TENHA TOMADO ALGUM DANO ENTÃO O BUFF TEM A CHANCE DE SER UMA RECUPERAÇÃO DE VIDA
                             sorteio = random.randint(0, 1)
-                            #print(f'sorteio: {sorteio}')
 
                             if sorteio == 0:
                                 barrasVidaNave[vidaNave].draw(win)
@@ -471,33 +470,29 @@ def jogo():
                         else:                           #CASO AINDA NÃO TENHA TOMADO DANO O BUFF AUTOMATICAMENTE SERÁ AUMENTO DE VELOCIDADE
                             velocidadeNave += 0.5
 
-                        print(f'velocidade da nave: {velocidadeNave}')
-                        print(f'vida da nave: {vidaNave}')
+                        print(f'Velocidade da nave: {velocidadeNave}\nVida da nave: {vidaNave}')
 
                     elif aliado.getP1().getX() <= parteNave.getP2().getX() <= aliado.getP2().getX():
                         lista_aliados.remove(aliado)
                         aliado.undraw()
                         bufff.undraw()
-                        #ta_explodindo = True
-                        #quem_explodiu = elem
-                        velocidadeNave += 1
-                        if vidaNave < 5:
+                        
+                        if vidaNave < 5:       #CASO A NAVE JÁ TENHA TOMADO ALGUM DANO ENTÃO O BUFF TEM A CHANCE DE SER UMA RECUPERAÇÃO DE VIDA
                             sorteio = random.randint(0, 1)
-                            print(f'sorteio{sorteio}')
-                            if sorteio == 0:
-                                velocidadeNave += 1
-                            if sorteio == 1:
-                                barrasVidaNave[vidaNave].draw(win)
-                                vidaNave+=1
-                        else:
-                            velocidadeNave += 1
 
-                        print(f'velocidade{velocidadeNave}')
-                        print(f'vida{vidaNave}')
+                            if sorteio == 0:
+                                barrasVidaNave[vidaNave].draw(win)
+                                vidaNave += 1
+                            if sorteio == 1:
+                                velocidadeNave += 0.5
+                        else:                           #CASO AINDA NÃO TENHA TOMADO DANO O BUFF AUTOMATICAMENTE SERÁ AUMENTO DE VELOCIDADE
+                            velocidadeNave += 0.5
+
+                        print(f'Velocidade da nave: {velocidadeNave}\nVida da nave: {vidaNave}')
 
         #----------------------------ANIMAÇÃO DE EXPLOSÃO DOS INIMIGOS--------------------------
         if ta_explodindo:
-            boom= explosao(quem_explodiu)           
+            boom = explosao(quem_explodiu)           
             boom[qual_explosao].draw(win)
             gf.update(100)
             boom[qual_explosao].undraw()
@@ -510,32 +505,24 @@ def jogo():
         if seg > dificultador_speedinimigo: #AUMENTO DA VELOCIDADE DOS INIMIGOS
             velocidadeInimigo += 0.5
             dificultador_speedinimigo+=50
-            #print('wtffffff')
         
         if seg > dificultador_qntinimigo: #AUMENTO NA VELOCIDADE QUE OS INIMIGOS SÃO GERADOS
             if timer > 60:
                 dificultador_qntinimigo+=50
                 timer-=10
-                #print('wtffffff')
 
         
-        #print(velocidadeInimigo)
-        #print(timer)
         cont+=1
         ms+=1
         gf.update(60)
         temporizador.undraw()
         contAbates.undraw()
-
-        #print(hitbox.getP2())
-        #print(tiro.getP2())
-        #print(tiro.getCenter())
     
     return [seg, inimigos_mortos]
 
 #----------------------DEF QUE CONTÉM OS ELEMENTOS QUE COMPÕEM A TELA DE FIM DE JOGO----------------------------
 def fimJogo(resultadoDoGame):
-    pontos = resultadoDoGame # A def jogo() retorna a pontuação e os abates da partida. E com isso é contruído a tela de fim de jogo.
+    pontos = resultadoDoGame # A def jogo() retorna a pontuação e os abates da partida. E com isso é construído a tela de fim de jogo.
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
     
     textoFim = gf.Text(gf.Point(350, 300), 'Fim de jogo')
@@ -578,30 +565,33 @@ while loopDoGame == False:
     mostraMenu()
     runGame= jogo()
     final = fimJogo(runGame)
-    for elem in itensJogo:
-        elem.undraw()
-    for elem in barrasVida:
-        elem.undraw()
-    for elem in barrasVidaNave:
-        elem.undraw()
-    for elem in final:
-        elem.draw(win)
+    for item in itensJogo:
+        item.undraw()
+    for item in barrasVida:
+        item.undraw()
+    for item in barrasVidaNave:
+        item.undraw()
+    for item in final:
+        item.draw(win)
         
     fimMsm= False
     continuou= False
+    
     while fimMsm == False and continuou == False:
         clickFinal = win.getMouse()
-        if 250 < clickFinal.getX() < 330:
+        
+        if 250 < clickFinal.getX() < 330: #     Clicou em continuar
             if 520 < clickFinal.getY() < 560:
                 for elem in final:
                     elem.undraw()
                 continuou=True
 
-        elif 360 < clickFinal.getX() < 440:
+        elif 360 < clickFinal.getX() < 440: #     Clicou em sair
             if 520 < clickFinal.getY() < 560:
                 fimMsm=True
+                
     if fimMsm == True:
-        loopDoGame= True
+        loopDoGame = True
     if continuou == True:
         continue
 
