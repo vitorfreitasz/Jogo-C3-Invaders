@@ -31,23 +31,23 @@ def menu():
 #---------------------------FUNÇÃO QUE CONTÉM OS ITENS DA PARTE "SOBRE O JOGO"----------------------------
 def sobre_o_jogo():
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
-    texto1 = gf.Text(gf.Point(345, 120), f'C3 Invaders é um jogo de batalha espacial onde o jogador\ntem o objetivo de proteger o Centro de Ciências Computacionais de invasores alienígenas.')
+    texto1 = gf.Text(gf.Point(345, 80), f'C3 Invaders é um jogo de batalha espacial onde o jogador\ntem o objetivo de proteger o Centro de Ciências Computacionais\nde invasores alienígenas.')
     texto1.setTextColor('white')
     texto1.setSize(14)
 
-    texto2 = gf.Text(gf.Point(340, 180), f'O jogador controla uma nave espacial que possui lançadores de laser\naltamente tecnológicos e que são capazes de eliminar os inimigos.')
+    texto2 = gf.Text(gf.Point(340, 160), f'O jogador controla uma nave espacial que possui lançadores de laser\naltamente tecnológicos e que são capazes de eliminar os inimigos.')
     texto2.setTextColor('white')
     texto2.setSize(14)
 
-    texto3 = gf.Text(gf.Point(350, 250), f'O jogador deve impedir que a vida da nave ou a do planeta cheguem a zero.\nCaso isso aconteça o jogo será finalizado e o jogador poderá ver sua pontuação.')
+    texto3 = gf.Text(gf.Point(350, 230), f'O jogador deve impedir que a vida da nave ou a do planeta cheguem a zero.\nCaso isso aconteça o jogo será finalizado e o jogador poderá ver sua pontuação.')
     texto3.setTextColor('white')
     texto3.setSize(14)
 
-    texto4 = gf.Text(gf.Point(350, 410), f'Além dos inimigos, também existem as naves aliadas que podem trazer\nmelhorias para a nave do jogador ou até mesmo regenerar sua vida.\n\nTipos de melhorias:\n\nRegeneração de vida\n\nAumento da velocidade de movimento\n\nAumento na quantidade de disparos')
+    texto4 = gf.Text(gf.Point(350, 360), f'Além dos inimigos, também existem as naves aliadas que podem trazer\nmelhorias para a nave do jogador ou até mesmo regenerar sua vida.\n\nTipos de melhorias:\n\nRegeneração de vida\n\nAumento da velocidade de movimento')
     texto4.setTextColor('white')
     texto4.setSize(14)
 
-    texto5 = gf.Text(gf.Point(340, 660), f'O jogo conta com uma mecânica simples e de fácil aprendizado.\n\nMapeamento de botões:\n\nAtirar: clique esquerdo do mouse\n\nMover a nave para equerda: tecla "a"\n\nMover a nave para direita: tecla "d"\n\nPausar o jogo: "Esc"')
+    texto5 = gf.Text(gf.Point(340, 600), f'O jogo conta com uma mecânica simples e de fácil aprendizado.\n\nMapeamento de botões:\n\nAtirar: clique esquerdo do mouse\n\nMover a nave para equerda: tecla "a"\n\nMover a nave para direita: tecla "d"\n\nPausar o jogo: "Esc"')
     texto5.setTextColor('white')
     texto5.setSize(14)
 
