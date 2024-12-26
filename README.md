@@ -1,8 +1,8 @@
 # C3 Invaders
 <p align="justify">
-Similar ao Space Invaders, C3 Invaders é um jogo desenvolvido em Python, através da biblioteca Graphics.
-O projeto é um trabalho acadêmico, desenvolvido na disciplina de Algoritmos e Estrutura de Dados I, no ano de 2022.
-O objetivo é exercitar a lógica de programação, além da manipulação de diversos tipos de dados, e exploração da sintaxe e recursos da linguagem Python. 
+Similar ao Space Invaders, C3 Invaders é um jogo desenvolvido em <b>Python</b>, através da biblioteca <b>Graphics</b>.
+O projeto é um trabalho acadêmico, desenvolvido na disciplina de <b>Algoritmos e Estrutura de Dados I</b>, no ano de <b>2022</b>.
+O objetivo é <b>exercitar a lógica de programação</b>, além da manipulação de diversos tipos de dados, e exploração da sintaxe e recursos da linguagem Python. 
 Dessa forma, o código é perceptivelmente de um iniciante, com isso, não foram aplicados conteúdos mais profundos como o paradigma de programação orientada a objetos, dentre outros.
 </p>
 
@@ -10,9 +10,7 @@ Dessa forma, o código é perceptivelmente de um iniciante, com isso, não foram
 ## Sobre o jogo
 
 <p align="justify">
-C3 Invaders é um jogo de batalha espacial cujo objetivo é proteger o Centro de Ciências Computacionais de invasores alienígenas.
-<br>
-Você controlará uma nave espacial que possui lançadores de laser altamente tecnológicos e que são capazes de eliminar os inimigos. Você deverá impedir que a vida da nave ou do planeta cheguem a zero. Caso isso aconteça o jogo será finalizado e o jogador poderá ver sua pontuação. 
+C3 Invaders é um jogo de batalha espacial cujo objetivo é proteger o Centro de Ciências Computacionais de invasores alienígenas. Você controlará uma nave espacial que possui lançadores de laser altamente tecnológicos e que são capazes de eliminar os inimigos. Você deverá impedir que a vida da nave ou do planeta cheguem a zero. Caso isso aconteça o jogo será finalizado e o jogador poderá ver sua pontuação. 
 </p>
 
 ## Como rodar?
@@ -22,7 +20,7 @@ Baixe o repositório em sua máquina e depois siga os passos:
 - Tenha o Python instalado.
 - Rode `python .\run.py` Para rodar o game.
 
-Pronto! O jogo já deverá estar funcionando.
+<b>Pronto!</b> O jogo já deverá estar funcionando.
 
 ## Aqui estão algumas imagens do jogo
 
