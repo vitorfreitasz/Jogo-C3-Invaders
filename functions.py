@@ -43,7 +43,7 @@ def sobre_o_jogo():
     texto3.setTextColor('white')
     texto3.setSize(14)
 
-    texto4 = gf.Text(gf.Point(350, 360), f'Além dos inimigos, também existem as naves aliadas que podem trazer\nmelhorias para a nave do jogador ou até mesmo regenerar sua vida.\n\nTipos de melhorias:\n\nRegeneração de vida\n\nAumento da velocidade de movimento')
+    texto4 = gf.Text(gf.Point(350, 360), f'Além dos inimigos, também existem power ups que podem trazer\nmelhorias para sua nave ou até mesmo regenerar sua vida.\n\nTipos de melhorias:\n\nRegeneração de vida\n\nAumento da velocidade de movimento')
     texto4.setTextColor('white')
     texto4.setSize(14)
 
