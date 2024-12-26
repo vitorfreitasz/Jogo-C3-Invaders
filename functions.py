@@ -2,9 +2,7 @@ import graphics as gf
 from time import sleep
 import random
 
-win = gf.GraphWin('C3 Invaders', 700, 800, autoflush=False)
-
-#-------------------------------DEF QUE CONTÉM OS ITENS DO MENU---------------------------------------
+#-------------------------------FUNÇÃO QUE CONTÉM OS ITENS DO MENU---------------------------------------
 def menu():
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
     botaoIniciar = gf.Rectangle(gf.Point(250, 250), gf.Point(450, 330))
@@ -29,10 +27,9 @@ def menu():
     textoSair.setSize(26)
 
     return [background, botaoIniciar, botaoSobre, botaoSair, textoIniciar, textoSobre, textoSair]
-itensMenu = menu()
 
-#---------------------------DEF QUE CONTÉM OS ITENS DA PARTE "SOBRE O JOGO"----------------------------
-def sobreOjogo():
+#---------------------------FUNÇÃO QUE CONTÉM OS ITENS DA PARTE "SOBRE O JOGO"----------------------------
+def sobre_o_jogo():
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
     texto1 = gf.Text(gf.Point(345, 120), f'C3 Invaders é um jogo de batalha espacial onde o jogador\ntem o objetivo de proteger o Centro de Ciências Computacionais de invasores alienígenas.')
     texto1.setTextColor('white')
@@ -55,10 +52,9 @@ def sobreOjogo():
     texto5.setSize(14)
 
     return [background, texto1, texto2, texto3, texto4, texto5]
-itensSobre = sobreOjogo()
 
-#-------------------------------DEF QUE CONTÉM OS ITENS QUE COMPÕEM O JOGO-----------------------------
-def drawEstrutura():
+#-------------------------------FUNÇÃO QUE CONTÉM OS ITENS QUE COMPÕEM O JOGO-----------------------------
+def estrutura():
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
 
     pontuacao= gf.Text(gf.Point(55,20), "Pontuação:")
@@ -84,7 +80,6 @@ def drawEstrutura():
     texto_vidaNave.setSize(14)
 
     return [background, pontuacao, Abates, retangulo_vida, retangulo_vidaNave, texto_vida, texto_vidaNave]
-itensJogo = drawEstrutura()
 
 #---------------------------------COORDENADAS DAS BARRINHAS DE VIDA DO c3-------------------------
 def retangulo_vida_c3():
@@ -112,9 +107,8 @@ def retangulo_vida_c3():
 
     lista_vida = [retangulo1, retangulo2, retangulo3, retangulo4, retangulo5, retangulo6, retangulo7, retangulo8, retangulo9, retangulo10]
     return lista_vida
-barrasVida = retangulo_vida_c3()
 
-#---------------------------------COORDENADAS DAS BARRINHAS DE VIDA DA NAVE-------------------------------   
+#---------------------------------COORDENADAS DAS BARRINHAS DE VIDA DA NAVE-------------------------------  
 def retangulo_vida_nave():
     retangulo1 = gf.Rectangle(gf.Point(597, 30), gf.Point(611, 44))
     retangulo1.setFill('red')
@@ -129,9 +123,8 @@ def retangulo_vida_nave():
 
     lista_vida = [retangulo1, retangulo2, retangulo3, retangulo4, retangulo5]
     return lista_vida
-barrasVidaNave = retangulo_vida_nave()
 
-#----------------------------DEF QUE CONTÉM OS ITENS QUE APARECEM QUANDO O JOGO É PAUSADO-------------------
+#----------------------------FUNÇÃO QUE CONTÉM OS ITENS QUE APARECEM QUANDO O JOGO É PAUSADO-------------------
 def estrutura_pause():
     textoPause = gf.Text(gf.Point(350, 400), f'PAUSE')
     textoPause.setTextColor('white')
@@ -153,15 +146,14 @@ def estrutura_pause():
 
 
     return [textoPause, botaoContinuar, textoContinuar, botaoSair, textoSair]
-pause = estrutura_pause()
 
-#------------------------DEF QUE RETORNA UMA LISTA DOS SPRITES QUE FORMAM A ANIMAÇÃO DE EXPLOSÃO--------------
+#------------------------FUNÇÃO QUE RETORNA UMA LISTA DOS SPRITES QUE FORMAM A ANIMAÇÃO DE EXPLOSÃO--------------
 def explosao(x):
     explosoes = [gf.Image(x.getCenter(), 'img/explosao 0.png'),gf.Image(x.getCenter(), 'img/explosao 1.png'),gf.Image(x.getCenter(), 'img/explosao 2.png'),gf.Image(x.getCenter(), 'img/explosao 3.png'),gf.Image(x.getCenter(), 'img/explosao 4.png'),gf.Image(x.getCenter(), 'img/explosao 5.png'),gf.Image(x.getCenter(), 'img/explosao 6.png')]
     return explosoes
 
-#------------------------------------DEF QUE FAZ O FUNCIONAMENTO DO MENU---------------------------------------
-def mostraMenu():
+#------------------------------------FUNÇÃO QUE FAZ O FUNCIONAMENTO DO MENU---------------------------------------
+def mostra_menu(win, itensMenu, itensSobre, itensJogo, barrasVida, barrasVidaNave):
     iniciar = False
     sair = False
 
@@ -205,8 +197,8 @@ def mostraMenu():
             for item in barrasVidaNave:
                 item.draw(win)
 
-#-------------------------------------------------DEF DO JOGO--------------------------------------------------   
-def jogo():
+#-------------------------------------------------FUNÇÃO DO JOGO--------------------------------------------------   
+def jogo(win, barrasVida, barrasVidaNave, pause):
     #GERANDO MOSTRANDO A NAVE NA TELA
     nave = gf.Image(gf.Point(350, 745), 'img/nave.png')
     nave.draw(win)
@@ -520,8 +512,8 @@ def jogo():
     
     return [seg, inimigos_mortos]
 
-#----------------------DEF QUE CONTÉM OS ELEMENTOS QUE COMPÕEM A TELA DE FIM DE JOGO----------------------------
-def fimJogo(resultadoDoGame):
+#----------------------FUNÇÃO QUE CONTÉM OS ELEMENTOS QUE COMPÕEM A TELA DE FIM DE JOGO----------------------------
+def fim_de_jogo(resultadoDoGame):
     pontos = resultadoDoGame # A def jogo() retorna a pontuação e os abates da partida. E com isso é construído a tela de fim de jogo.
     background = gf.Image(gf.Point(350, 400), 'img/background.png')
     
@@ -558,49 +550,3 @@ def fimJogo(resultadoDoGame):
     ret2.setOutline('red')
 
     return [background, textoFim, pontuacao, abates, continuaOuAcaba, continua, acaba, ret1, ret2]
-    
-
-loopDoGame = False
-while loopDoGame == False:
-    mostraMenu()
-    runGame= jogo()
-    final = fimJogo(runGame)
-    for item in itensJogo:
-        item.undraw()
-    for item in barrasVida:
-        item.undraw()
-    for item in barrasVidaNave:
-        item.undraw()
-    for item in final:
-        item.draw(win)
-        
-    fimMsm= False
-    continuou= False
-    
-    while fimMsm == False and continuou == False:
-        clickFinal = win.getMouse()
-        
-        if 250 < clickFinal.getX() < 330: #     Clicou em continuar
-            if 520 < clickFinal.getY() < 560:
-                for elem in final:
-                    elem.undraw()
-                continuou=True
-
-        elif 360 < clickFinal.getX() < 440: #     Clicou em sair
-            if 520 < clickFinal.getY() < 560:
-                fimMsm=True
-                
-    if fimMsm == True:
-        loopDoGame = True
-    if continuou == True:
-        continue
-
-win.close()
-
-'''
-
-O código não está devidamente limpo e organizado conforme o ideal, e por isso, talvez sua leitura não esteja amigável.
-
-Entretanto, o objetivo da atividade era exercitar a solução de problemas e a lógica, e com isso, o sistema foi desenvolvido sem preocupações nesse quesito.
-
-'''
